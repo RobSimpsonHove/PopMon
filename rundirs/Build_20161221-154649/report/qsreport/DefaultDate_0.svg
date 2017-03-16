@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg viewBox="0 0 400 301">
+  <defs/>
+  <g>
+    <rect x="0.0" y="0.0" height="301.0" width="400.0" fill="white"/>
+    <line stroke="black" x1="86.0" y1="156.0" x2="346.0" y2="156.0"/>
+    <text transform="translate(211.0,15.0)" text-anchor="middle">DefaultDate</text>
+    <line stroke="black" x1="86.0" y1="20.0" x2="86.0" y2="156.0"/>
+    <line stroke="black" x1="83.0" y1="156.0" x2="86.0" y2="156.0"/>
+    <text transform="translate(79.0,156.0)" text-anchor="end"> 0</text>
+    <line stroke="black" x1="83.0" y1="140.88888888888889" x2="86.0" y2="140.88888888888889"/>
+    <text transform="translate(79.0,140.88888888888889)" text-anchor="end"> 5000</text>
+    <line stroke="black" x1="83.0" y1="125.77777777777777" x2="86.0" y2="125.77777777777777"/>
+    <text transform="translate(79.0,125.77777777777777)" text-anchor="end"> 10000</text>
+    <line stroke="black" x1="83.0" y1="110.66666666666666" x2="86.0" y2="110.66666666666666"/>
+    <text transform="translate(79.0,110.66666666666666)" text-anchor="end"> 15000</text>
+    <line stroke="black" x1="83.0" y1="95.55555555555556" x2="86.0" y2="95.55555555555556"/>
+    <text transform="translate(79.0,95.55555555555556)" text-anchor="end"> 20000</text>
+    <line stroke="black" x1="83.0" y1="80.44444444444444" x2="86.0" y2="80.44444444444444"/>
+    <text transform="translate(79.0,80.44444444444444)" text-anchor="end"> 25000</text>
+    <line stroke="black" x1="83.0" y1="65.33333333333333" x2="86.0" y2="65.33333333333333"/>
+    <text transform="translate(79.0,65.33333333333333)" text-anchor="end"> 30000</text>
+    <line stroke="black" x1="83.0" y1="50.22222222222223" x2="86.0" y2="50.22222222222223"/>
+    <text transform="translate(79.0,50.22222222222223)" text-anchor="end"> 35000</text>
+    <line stroke="black" x1="83.0" y1="35.111111111111114" x2="86.0" y2="35.111111111111114"/>
+    <text transform="translate(79.0,35.111111111111114)" text-anchor="end"> 40000</text>
+    <line stroke="black" x1="83.0" y1="20.0" x2="86.0" y2="20.0"/>
+    <text transform="translate(79.0,20.0)" text-anchor="end"> 45000</text>
+    <text transform="translate(30.0,88.0) rotate(270)" text-anchor="middle">count()</text>
+    <rect x="86.625" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(89.25,161.0) rotate(90)" text-anchor="start">&lt; 01/01/1991</text>
+    <circle cx="92.25" cy="156" r="2" fill="black"/>
+    <line stroke="black" x1="92.25" y1="156.0" x2="92.25" y2="156.0"/>
+    <line stroke="black" x1="90.25" y1="156.0" x2="94.25" y2="156.0"/>
+    <line stroke="black" x1="92.25" y1="156.0" x2="92.25" y2="156.0"/>
+    <line stroke="black" x1="90.25" y1="156.0" x2="94.25" y2="156.0"/>
+    <rect x="99.125" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(101.75,161.0) rotate(90)" text-anchor="start">01/01/1991 to 31/03/1991</text>
+    <circle cx="104.75" cy="156" r="2" fill="black"/>
+    <line stroke="black" x1="104.75" y1="156.0" x2="104.75" y2="156.0"/>
+    <line stroke="black" x1="102.75" y1="156.0" x2="106.75" y2="156.0"/>
+    <line stroke="black" x1="104.75" y1="156.0" x2="104.75" y2="156.0"/>
+    <line stroke="black" x1="102.75" y1="156.0" x2="106.75" y2="156.0"/>
+    <rect x="111.625" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(114.25,161.0) rotate(90)" text-anchor="start">01/04/1991 to 30/06/1991</text>
+    <circle cx="117.25" cy="156" r="2" fill="black"/>
+    <line stroke="black" x1="117.25" y1="156.0" x2="117.25" y2="156.0"/>
+    <line stroke="black" x1="115.25" y1="156.0" x2="119.25" y2="156.0"/>
+    <line stroke="black" x1="117.25" y1="156.0" x2="117.25" y2="156.0"/>
+    <line stroke="black" x1="115.25" y1="156.0" x2="119.25" y2="156.0"/>
+    <rect x="124.125" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(126.75,161.0) rotate(90)" text-anchor="start">01/07/1991 to 30/09/1991</text>
+    <circle cx="129.75" cy="146" r="2" fill="black"/>
+    <line stroke="black" x1="129.75" y1="146.0" x2="129.75" y2="135.0"/>
+    <line stroke="black" x1="127.75" y1="135.0" x2="131.75" y2="135.0"/>
+    <line stroke="black" x1="129.75" y1="146.0" x2="129.75" y2="156.0"/>
+    <line stroke="black" x1="127.75" y1="156.0" x2="131.75" y2="156.0"/>
+    <rect x="136.625" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(139.25,161.0) rotate(90)" text-anchor="start">01/10/1991 to 31/12/1991</text>
+    <circle cx="142.25" cy="156" r="2" fill="black"/>
+    <line stroke="black" x1="142.25" y1="156.0" x2="142.25" y2="156.0"/>
+    <line stroke="black" x1="140.25" y1="156.0" x2="144.25" y2="156.0"/>
+    <line stroke="black" x1="142.25" y1="156.0" x2="142.25" y2="156.0"/>
+    <line stroke="black" x1="140.25" y1="156.0" x2="144.25" y2="156.0"/>
+    <rect x="149.125" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(151.75,161.0) rotate(90)" text-anchor="start">01/01/1992 to 31/03/1992</text>
+    <circle cx="154.75" cy="156" r="2" fill="black"/>
+    <line stroke="black" x1="154.75" y1="156.0" x2="154.75" y2="156.0"/>
+    <line stroke="black" x1="152.75" y1="156.0" x2="156.75" y2="156.0"/>
+    <line stroke="black" x1="154.75" y1="156.0" x2="154.75" y2="156.0"/>
+    <line stroke="black" x1="152.75" y1="156.0" x2="156.75" y2="156.0"/>
+    <rect x="161.625" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(164.25,161.0) rotate(90)" text-anchor="start">01/04/1992 to 30/06/1992</text>
+    <circle cx="167.25" cy="156" r="2" fill="black"/>
+    <line stroke="black" x1="167.25" y1="156.0" x2="167.25" y2="156.0"/>
+    <line stroke="black" x1="165.25" y1="156.0" x2="169.25" y2="156.0"/>
+    <line stroke="black" x1="167.25" y1="156.0" x2="167.25" y2="156.0"/>
+    <line stroke="black" x1="165.25" y1="156.0" x2="169.25" y2="156.0"/>
+    <rect x="174.125" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(176.75,161.0) rotate(90)" text-anchor="start">01/07/1992 to 30/09/1992</text>
+    <circle cx="179.75" cy="139" r="2" fill="black"/>
+    <line stroke="black" x1="179.75" y1="139.0" x2="179.75" y2="132.0"/>
+    <line stroke="black" x1="177.75" y1="132.0" x2="181.75" y2="132.0"/>
+    <line stroke="black" x1="179.75" y1="139.0" x2="179.75" y2="146.0"/>
+    <line stroke="black" x1="177.75" y1="146.0" x2="181.75" y2="146.0"/>
+    <rect x="186.625" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(189.25,161.0) rotate(90)" text-anchor="start">01/10/1992 to 31/12/1992</text>
+    <circle cx="192.25" cy="142" r="2" fill="black"/>
+    <line stroke="black" x1="192.25" y1="142.0" x2="192.25" y2="135.0"/>
+    <line stroke="black" x1="190.25" y1="135.0" x2="194.25" y2="135.0"/>
+    <line stroke="black" x1="192.25" y1="142.0" x2="192.25" y2="150.0"/>
+    <line stroke="black" x1="190.25" y1="150.0" x2="194.25" y2="150.0"/>
+    <rect x="199.125" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(201.75,161.0) rotate(90)" text-anchor="start">01/01/1993 to 31/03/1993</text>
+    <circle cx="204.75" cy="153" r="2" fill="black"/>
+    <line stroke="black" x1="204.75" y1="153.0" x2="204.75" y2="150.0"/>
+    <line stroke="black" x1="202.75" y1="150.0" x2="206.75" y2="150.0"/>
+    <line stroke="black" x1="204.75" y1="153.0" x2="204.75" y2="156.0"/>
+    <line stroke="black" x1="202.75" y1="156.0" x2="206.75" y2="156.0"/>
+    <rect x="211.625" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(214.25,161.0) rotate(90)" text-anchor="start">01/04/1993 to 30/06/1993</text>
+    <circle cx="217.25" cy="149" r="2" fill="black"/>
+    <line stroke="black" x1="217.25" y1="149.0" x2="217.25" y2="146.0"/>
+    <line stroke="black" x1="215.25" y1="146.0" x2="219.25" y2="146.0"/>
+    <line stroke="black" x1="217.25" y1="149.0" x2="217.25" y2="153.0"/>
+    <line stroke="black" x1="215.25" y1="153.0" x2="219.25" y2="153.0"/>
+    <rect x="224.125" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(226.75,161.0) rotate(90)" text-anchor="start">01/07/1993 to 30/09/1993</text>
+    <circle cx="229.75" cy="151" r="2" fill="black"/>
+    <line stroke="black" x1="229.75" y1="151.0" x2="229.75" y2="149.0"/>
+    <line stroke="black" x1="227.75" y1="149.0" x2="231.75" y2="149.0"/>
+    <line stroke="black" x1="229.75" y1="151.0" x2="229.75" y2="153.0"/>
+    <line stroke="black" x1="227.75" y1="153.0" x2="231.75" y2="153.0"/>
+    <rect x="236.625" y="155.0" height="1.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(239.25,161.0) rotate(90)" text-anchor="start">01/10/1993 to 31/12/1993</text>
+    <circle cx="242.25" cy="149" r="2" fill="black"/>
+    <line stroke="black" x1="242.25" y1="149.0" x2="242.25" y2="148.0"/>
+    <line stroke="black" x1="240.25" y1="148.0" x2="244.25" y2="148.0"/>
+    <line stroke="black" x1="242.25" y1="149.0" x2="242.25" y2="151.0"/>
+    <line stroke="black" x1="240.25" y1="151.0" x2="244.25" y2="151.0"/>
+    <rect x="249.125" y="155.0" height="1.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(251.75,161.0) rotate(90)" text-anchor="start">01/01/1994 to 31/03/1994</text>
+    <circle cx="254.75" cy="150" r="2" fill="black"/>
+    <line stroke="black" x1="254.75" y1="150.0" x2="254.75" y2="148.0"/>
+    <line stroke="black" x1="252.75" y1="148.0" x2="256.75" y2="148.0"/>
+    <line stroke="black" x1="254.75" y1="150.0" x2="254.75" y2="152.0"/>
+    <line stroke="black" x1="252.75" y1="152.0" x2="256.75" y2="152.0"/>
+    <rect x="261.625" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(264.25,161.0) rotate(90)" text-anchor="start">01/04/1994 to 30/06/1994</text>
+    <circle cx="267.25" cy="151" r="2" fill="black"/>
+    <line stroke="black" x1="267.25" y1="151.0" x2="267.25" y2="149.0"/>
+    <line stroke="black" x1="265.25" y1="149.0" x2="269.25" y2="149.0"/>
+    <line stroke="black" x1="267.25" y1="151.0" x2="267.25" y2="154.0"/>
+    <line stroke="black" x1="265.25" y1="154.0" x2="269.25" y2="154.0"/>
+    <rect x="274.125" y="156.0" height="0.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(276.75,161.0) rotate(90)" text-anchor="start">01/07/1994 to 30/09/1994</text>
+    <circle cx="279.75" cy="150" r="2" fill="black"/>
+    <line stroke="black" x1="279.75" y1="150.0" x2="279.75" y2="148.0"/>
+    <line stroke="black" x1="277.75" y1="148.0" x2="281.75" y2="148.0"/>
+    <line stroke="black" x1="279.75" y1="150.0" x2="279.75" y2="152.0"/>
+    <line stroke="black" x1="277.75" y1="152.0" x2="281.75" y2="152.0"/>
+    <rect x="286.625" y="155.0" height="1.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(289.25,161.0) rotate(90)" text-anchor="start">01/10/1994 to 31/12/1994</text>
+    <circle cx="292.25" cy="144" r="2" fill="black"/>
+    <line stroke="black" x1="292.25" y1="144.0" x2="292.25" y2="142.0"/>
+    <line stroke="black" x1="290.25" y1="142.0" x2="294.25" y2="142.0"/>
+    <line stroke="black" x1="292.25" y1="144.0" x2="292.25" y2="147.0"/>
+    <line stroke="black" x1="290.25" y1="147.0" x2="294.25" y2="147.0"/>
+    <rect x="299.125" y="155.0" height="1.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(301.75,161.0) rotate(90)" text-anchor="start">01/01/1995 to 31/03/1995</text>
+    <circle cx="304.75" cy="147" r="2" fill="black"/>
+    <line stroke="black" x1="304.75" y1="147.0" x2="304.75" y2="145.0"/>
+    <line stroke="black" x1="302.75" y1="145.0" x2="306.75" y2="145.0"/>
+    <line stroke="black" x1="304.75" y1="147.0" x2="304.75" y2="149.0"/>
+    <line stroke="black" x1="302.75" y1="149.0" x2="306.75" y2="149.0"/>
+    <rect x="311.625" y="155.0" height="1.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(314.25,161.0) rotate(90)" text-anchor="start">&gt;= 01/04/1995</text>
+    <circle cx="317.25" cy="149" r="2" fill="black"/>
+    <line stroke="black" x1="317.25" y1="149.0" x2="317.25" y2="148.0"/>
+    <line stroke="black" x1="315.25" y1="148.0" x2="319.25" y2="148.0"/>
+    <line stroke="black" x1="317.25" y1="149.0" x2="317.25" y2="151.0"/>
+    <line stroke="black" x1="315.25" y1="151.0" x2="319.25" y2="151.0"/>
+    <rect x="324.125" y="26.0" height="130.0" width="11.25" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(326.75,161.0) rotate(90)" text-anchor="start">Null</text>
+    <circle cx="329.75" cy="148" r="2" fill="black"/>
+    <line stroke="black" x1="329.75" y1="148.0" x2="329.75" y2="148.0"/>
+    <line stroke="black" x1="327.75" y1="148.0" x2="331.75" y2="148.0"/>
+    <line stroke="black" x1="329.75" y1="148.0" x2="329.75" y2="148.0"/>
+    <line stroke="black" x1="327.75" y1="148.0" x2="331.75" y2="148.0"/>
+    <line stroke-dasharray="10,5" stroke="black" x1="86.0" y1="148.0" x2="336.0" y2="148.0"/>
+    <line stroke="black" x1="336.0" y1="20.0" x2="336.0" y2="156.0"/>
+    <line stroke="black" x1="339.0" y1="156.0" x2="336.0" y2="156.0"/>
+    <text transform="translate(343.0,156.0)" text-anchor="start"> 0.0</text>
+    <line stroke="black" x1="339.0" y1="142.0" x2="336.0" y2="142.0"/>
+    <text transform="translate(343.0,142.0)" text-anchor="start"> 0.1</text>
+    <line stroke="black" x1="339.0" y1="129.0" x2="336.0" y2="129.0"/>
+    <text transform="translate(343.0,129.0)" text-anchor="start"> 0.2</text>
+    <line stroke="black" x1="339.0" y1="115.0" x2="336.0" y2="115.0"/>
+    <text transform="translate(343.0,115.0)" text-anchor="start"> 0.3</text>
+    <line stroke="black" x1="339.0" y1="102.0" x2="336.0" y2="102.0"/>
+    <text transform="translate(343.0,102.0)" text-anchor="start"> 0.4</text>
+    <line stroke="black" x1="339.0" y1="88.0" x2="336.0" y2="88.0"/>
+    <text transform="translate(343.0,88.0)" text-anchor="start"> 0.5</text>
+    <line stroke="black" x1="339.0" y1="74.0" x2="336.0" y2="74.0"/>
+    <text transform="translate(343.0,74.0)" text-anchor="start"> 0.6</text>
+    <line stroke="black" x1="339.0" y1="61.0" x2="336.0" y2="61.0"/>
+    <text transform="translate(343.0,61.0)" text-anchor="start"> 0.7</text>
+    <line stroke="black" x1="339.0" y1="47.0" x2="336.0" y2="47.0"/>
+    <text transform="translate(343.0,47.0)" text-anchor="start"> 0.8</text>
+    <line stroke="black" x1="339.0" y1="34.0" x2="336.0" y2="34.0"/>
+    <text transform="translate(343.0,34.0)" text-anchor="start"> 0.9</text>
+    <line stroke="black" x1="339.0" y1="20.0" x2="336.0" y2="20.0"/>
+    <text transform="translate(343.0,20.0)" text-anchor="start"> 1.0</text>
+    <text transform="translate(380.0,88.0) rotate(270)" text-anchor="middle">mean(RespondPress)</text>
+  </g>
+</svg>

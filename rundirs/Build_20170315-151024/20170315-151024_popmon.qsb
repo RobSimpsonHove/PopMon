@@ -1,0 +1,253 @@
+<?xml version="1.0" ?>
+<build name="Build"   default="Main" initial="init">
+
+    <parameter 	name="observation date" value=""  />
+    <parameter 	name="Benchmark audit" 	value="dummy"  type="file" />
+    <parameter 	name="Benchmark focus" 	value="C:/Users/ro020si/Documents/Research/PopnMonitoring/foci/DirectBankUSA.ftr"  type="file" />
+    <parameter 	name="Monitored focus" 	value="C:/Users/ro020si/Documents/Research/PopnMonitoring/foci/DB2.ftr"  type="file"/>
+    <parameter  name="field list" 		value="" type="string"/>
+    <parameter  name="run directory" 	value=""/>
+
+    <parameter  name="outdir" 	value="C:/Bluefly"/>
+
+    <target name="Main">
+        <target name="get audit">
+            <basename property="basename1" file="${Benchmark focus}" suffix=".ftr"/>
+            <basename property="basename2" file="${Benchmark focus}" suffix=".qshtml"/>
+            <echo>b1 ${basename1}, b1 ${basename2}</echo>
+
+            <propertyregex property="path1"	input="${focus}"	regexp="${basename1}"	replace="" defaultvalue="${focus}"/>
+
+            <if>
+                <available file="${Benchmark audit}"/>
+                <then>
+                    <echo>COPY</echo>
+                    <copy file="${Benchmark audit}" tofile="${logdir}/benchmark.qshtml"/>
+                </then>
+                <else>
+                    <if>
+                        <equals arg1="${field list}" arg2=""/>
+                        <then>
+                            <qsaudit input="${Benchmark focus}"  output="${logdir}/benchmark.qshtml"/>
+                        </then>
+                        <else>
+                            <qsaudit input="${Benchmark focus}" fields="${field list}" output="${logdir}/benchmark.qshtml"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+
+            <qsaudit input="${Monitored focus}" reference="${logdir}/benchmark.qshtml" output="${outdir}/report.qshtml"/>
+
+            <qshtmlunpack input="${outdir}/report.qshtml" outputdir="${outdir}/report" />
+
+        </target>
+
+        <target name="Highlight report">
+            <property name="td" value="&lt;td "/>
+            <!-- table data attribute-->
+            <!-- <td  -->
+            <property name="deltapc" value="class=&quot;qsaudit_details_col_count_deltapc&quot;&gt;\s*&lt;div class=&quot;[^&quot;]+&quot;&gt;"/>
+            <!-- class="qsaudit_colmindeltapc">	<div class="qs_deltavalue_eq"> -->
+            <property name="deltapc_end" value="&lt;/div&gt;\s*&lt;/td&gt;"/>
+            <!--</div> </td> -->
+            <property name="ten_percent_plus" value="-?[1-9][0-9]{1,2}\.?[0-9]*"/>
+            <!-- NN or NNN -->
+            <property name="five_percent_plus" value="-?(?:[1-9][0-9]|[5-9])\.?[0-9]*"/>
+            <!-- NN or 5,6,7,9  -->
+            <loadfile srcfile="${outdir}/qsreport.html" property="report">
+                <filterchain>
+                    <striplinebreaks/>
+                    <tokenfilter>
+                        <!-- highlight yellow  *deltapc over certain value -->
+                        <!-- pattern="&lt;td (class=&quot;[^\s]*deltapc&quot;&gt;\s*&lt;div class=&quot;[^&quot;]+&quot;&gt;)(-?[1-9][0-9]{1,2}\.?[0-9]*)(&lt;/div&gt;\s*&lt;/td&gt;)" -->
+                        <replaceregex
+						pattern="${td}(${deltapc})(${ten_percent_plus})(${deltapc_end})"
+						replace="${td} bgcolor=&quot;yellow&quot; \1\2\3" flags="g"/>
+
+                    </tokenfilter>
+                </filterchain>
+            </loadfile>
+            <!-- 	<echo>${report}</echo> -->
+            <echo file="${outdir}/highlights.html">${report}</echo>
+        </target>
+
+
+      <!--   <target name="Build MHT file">
+
+            <fileset id="images"	dir="${logdir}/report/qsreport"    includes="*.png,*.svg"   	  />
+            <pathconvert property="imagelist"   pathsep=","   refid="images"	 			  />
+            <echo>IMAGELIST: ${imagelist}</echo>
+
+            <echo file="${logdir}/imagelist.txt" append="false"/>
+            <property name="links" value=""/>
+            <foreach list="${imagelist}" param="image" inheritall="true">
+                <tasks>
+                    <propertyregex property="link" input="${image}" regexp=".*\\" replace="qsreport/" />
+                    <echo file="${logdir}/imagelist.txt" append="true">${link} </echo>
+                    <echo>LINK: ${link}</echo>
+                </tasks>
+            </foreach>
+
+            <loadfile srcfile="${logdir}/imagelist.txt" property="imagefiles"/>
+
+            <property name="jythonjar"  location="${env.QSHOME}/server/${env.QSVERSION}/java/thirdparty/jython.jar"/>
+
+            <echo message="ARGUMENTS: -o ...report/TEST.mht -d ${logdir}/qsreport2.html ${imagefiles}"/>
+            <delete file="${logdir}/qsreport.mht" />
+
+            <java classname="html2mht"  classpath="html2mht.jar;${jythonjar}" fork="true">
+                <arg value="-o"/>
+                <arg file="${logdir}/report/TEST.mht"/>
+                <arg value="-d"/>
+                <arg file="${logdir}/report"/>
+                <arg value="highlights.html"/>
+                <arg line="${imagefiles}"/>
+            </java>
+        </target> -->
+
+        <target name="Build Exceptions report">
+            <echo>PATTERN "${td}(${deltapc})(${ten_percent_plus})(${deltapc_end})"</echo>
+            <loadfile srcfile="${outdir}/qsreport.html" property="exceptions">
+                <filterchain>
+                    <striplinebreaks/>
+                    <tokenfilter>
+                        <!-- highlight yellow and *** deltapc over certain value -->
+                        <replaceregex
+						pattern="${td}(${deltapc})(${ten_percent_plus})(${deltapc_end})"
+						replace="${td} bgcolor=&quot;yellow&quot; \1***\2\3" flags="g"/>
+                        <!-- Remove non-flagged table rows					-->
+                        <replaceregex pattern="&lt;tr&gt;" replace="${line.separator}&lt;tr&gt;" flags="g"/>
+                        <replaceregex pattern="&lt;tr&gt;(.*\*\*\*.*)&lt;/tr&gt;" replace="&lt;tr&gt;~\1&lt;/tr&gt;"  flags="g"/>
+                        <replaceregex pattern="&lt;tr&gt;(.*Field.*)&lt;/tr&gt;" replace="&lt;tr&gt;~\1&lt;/tr&gt;"  flags="g"/>
+                        <replaceregex pattern="&lt;tr&gt;(.*count\(\).*)&lt;/tr&gt;" replace="&lt;tr&gt;~\1&lt;/tr&gt;"  flags="g"/>
+                        <replaceregex pattern="&lt;tr&gt;[^~].*&lt;/tr&gt;" replace=""  flags="g"/>
+                        <replaceregex pattern="~" replace=""  flags="g"/>
+                        <replaceregex pattern="\*\*\*" replace=""  flags="g"/>
+                    </tokenfilter>
+
+                    <striplinebreaks/>
+                    <tokenfilter>
+                        <!-- Remove non-tables	-->
+                        <!-- Flag with ~, and put tables on individual lines	-->
+                        <replaceregex pattern="&lt;table" replace="${line.separator}~&lt;br/&gt;&lt;table" flags="g"/>
+                        <replaceregex pattern="&lt;/table&gt;" replace="&lt;/table&gt;${line.separator}" flags="g"/>
+                    </tokenfilter>
+                    <!--stuttering needed here for some reason -->
+                    <tokenfilter>
+                        <!--Remove non-tables (unflagged strings) -->
+                        <replaceregex pattern="^[^~].*$" replace=""  flags="m"/>
+                        <!-- remove tables with empty bodies -->
+                        <replaceregex pattern="^.*&lt;tbody&gt;&lt;/tbody&gt;.*$" replace=""  flags="m"/>
+                        <replaceregex pattern="~" replace=""  flags="g"/>
+
+                    </tokenfilter>
+                </filterchain>
+            </loadfile>
+            <echo>${exceptions}</echo>
+            <echo file="${outdir}/exceptions.html">${exceptions}</echo>
+
+            <!--
+<td class="qsaudit_colqinideltapc">	<table class="qs_deltavalue_pos">10</table>			</td>
+<td class="([^\s]+deltapc)">\s+<table class="([^"]+)">(-?[0-9]+\.[0-9]*)</table>\s*</td>
+&lt;td class=&quot;([^\s]*deltapc)&quot;&gt;\s*&lt;table class=&quot;([^&quot;]+)&quot;&gt;(-?[0-9]+\.?[0-9]*)&lt;/table&gt;\s*&lt;/td&gt;
+<td class="([^\s]+deltapc)">\s+<table class="([^"]+)">(-?[0-9]+\.?[0-9]*)</table>\s*</td>
+-->
+        </target>
+
+    </target>
+
+
+    <target name="init">
+
+        <defaults  parallel="2" concurrent="false" outputproperty="true" logfile="BuildLogfile.log"/>
+        <!-- Generally useful variables -->
+        <property   name="Miner"   value="C:/PortraitMiner"  description="Root working directory"/>
+        <property   name="dir"   value=".."  description="Root working directory"/>
+        <property   name="logs"  value="${dir}/rundirs" description="Working directory"/>
+        <property   name="outputlogs"  value="${dir}/logs" description="Log directory"/>
+        <mkdir dir="${logs}"/>
+        <mkdir dir="${outputlogs}"/>
+
+        <tstamp>
+            <format property="buildlabel" pattern="yyyyMMdd-HHmmss"/>
+        </tstamp>
+        <tstamp>
+            <format property="today" pattern="yyyyMMdd"/>
+        </tstamp>
+        <!-- read env vars into env.xxx properties -->
+        <property environment="env"/>
+        <property name="slash" value="/"/>
+
+
+        <!-- ######  Create timestamp for log unless 'run directory' parameter is provided ##### -->
+        <if>
+            <equals arg1="${run directory}" arg2="" />
+            <then>
+                <property name="logdir" value="${logs}/Build_${buildlabel}" description="Output directory"/>
+                <echo message="Setting property logdir to ${logdir}"/>
+            </then>
+            <else>
+                <!-- Translate \ into / -->
+                <propertyregex property="run directory" input="${run directory}" regexp="\\" replace="/" defaultvalue="${run directory}" override="true"/>
+                <!-- Is it a path? -->
+                <propertyregex property="run directory path" input="${run directory}" regexp=".*/.*" replace="true" defaultvalue="false"/>
+                <if>
+                    <equals arg1="${run directory path}" arg2="true"/>
+                    <then>
+                        <property name="logdir" value="${run directory}" description="Output directory"/>
+                    </then>
+                    <else>
+                        <!-- else put into /logs  -->
+                        <property name="logdir" value="${logs}/${run directory}" description="Output directory"/>
+                    </else>
+                </if>
+                <!-- copy this script into log dir -->
+                <basename property="buildscriptname" file="${qsbuild.file}" />
+                <copy file="${qsbuild.file}" tofile="${logdir}/${buildlabel}_${buildscriptname}"/>
+            </else>
+        </if>
+        <mkdir dir="${logdir}"/>
+        <!-- copy this script into log dir -->
+        <basename property="buildscriptname" file="${qsbuild.file}" />
+        <copy file="${qsbuild.file}" tofile="${logdir}/${buildlabel}_${buildscriptname}"/>
+
+    </target>
+    <!-- Init -->
+
+    <target name="test">
+
+        <echo file="test.xsl" append="false">
+            <![CDATA[<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Edited by XMLSpy® -->
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+  <html>
+  <body>
+    <h2>My CD Collection</h2>
+    <table border="1">
+      <tr bgcolor="#9acd32">
+        <th>Title</th>
+        <th>Artist</th>
+      </tr>
+      <xsl:for-each select="/html/body/table/table/tbody/tr">
+      <tr>
+        <td><xsl:value-of select="." /></td>
+      </tr>
+      </xsl:for-each>
+    </table>
+  </body>
+  </html>
+</xsl:template>
+</xsl:stylesheet>
+]]></echo>
+
+        <xslt in="report.html" style="test.xsl" out="out.html" />
+
+        <loadfile srcfile="out.html" property="test.txt"/>
+        <echo>${test.txt}</echo>
+    </target>
+
+</build>
+

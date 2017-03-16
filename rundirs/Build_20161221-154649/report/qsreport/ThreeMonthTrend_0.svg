@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg viewBox="0 0 400 301">
+  <defs/>
+  <g>
+    <rect x="0.0" y="0.0" height="301.0" width="400.0" fill="white"/>
+    <line stroke="black" x1="86.0" y1="211.0" x2="346.0" y2="211.0"/>
+    <text transform="translate(211.0,15.0)" text-anchor="middle">ThreeMonthTrend</text>
+    <line stroke="black" x1="86.0" y1="20.0" x2="86.0" y2="211.0"/>
+    <line stroke="black" x1="83.0" y1="211.0" x2="86.0" y2="211.0"/>
+    <text transform="translate(79.0,211.0)" text-anchor="end"> 0</text>
+    <line stroke="black" x1="83.0" y1="195.08333333333334" x2="86.0" y2="195.08333333333334"/>
+    <text transform="translate(79.0,195.08333333333334)" text-anchor="end"> 1000</text>
+    <line stroke="black" x1="83.0" y1="179.16666666666666" x2="86.0" y2="179.16666666666666"/>
+    <text transform="translate(79.0,179.16666666666666)" text-anchor="end"> 2000</text>
+    <line stroke="black" x1="83.0" y1="163.25" x2="86.0" y2="163.25"/>
+    <text transform="translate(79.0,163.25)" text-anchor="end"> 3000</text>
+    <line stroke="black" x1="83.0" y1="147.33333333333334" x2="86.0" y2="147.33333333333334"/>
+    <text transform="translate(79.0,147.33333333333334)" text-anchor="end"> 4000</text>
+    <line stroke="black" x1="83.0" y1="131.41666666666669" x2="86.0" y2="131.41666666666669"/>
+    <text transform="translate(79.0,131.41666666666669)" text-anchor="end"> 5000</text>
+    <line stroke="black" x1="83.0" y1="115.5" x2="86.0" y2="115.5"/>
+    <text transform="translate(79.0,115.5)" text-anchor="end"> 6000</text>
+    <line stroke="black" x1="83.0" y1="99.58333333333334" x2="86.0" y2="99.58333333333334"/>
+    <text transform="translate(79.0,99.58333333333334)" text-anchor="end"> 7000</text>
+    <line stroke="black" x1="83.0" y1="83.66666666666667" x2="86.0" y2="83.66666666666667"/>
+    <text transform="translate(79.0,83.66666666666667)" text-anchor="end"> 8000</text>
+    <line stroke="black" x1="83.0" y1="67.75" x2="86.0" y2="67.75"/>
+    <text transform="translate(79.0,67.75)" text-anchor="end"> 9000</text>
+    <line stroke="black" x1="83.0" y1="51.83333333333334" x2="86.0" y2="51.83333333333334"/>
+    <text transform="translate(79.0,51.83333333333334)" text-anchor="end"> 10000</text>
+    <line stroke="black" x1="83.0" y1="35.916666666666686" x2="86.0" y2="35.916666666666686"/>
+    <text transform="translate(79.0,35.916666666666686)" text-anchor="end"> 11000</text>
+    <line stroke="black" x1="83.0" y1="20.0" x2="86.0" y2="20.0"/>
+    <text transform="translate(79.0,20.0)" text-anchor="end"> 12000</text>
+    <text transform="translate(30.0,115.0) rotate(270)" text-anchor="middle">count()</text>
+    <rect x="87.13636363636364" y="168.0" height="43.0" width="20.454545454545453" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(94.36363636363636,216.0) rotate(90)" text-anchor="start">&lt; -1000</text>
+    <circle cx="97.36363636363636" cy="202" r="2" fill="black"/>
+    <line stroke="black" x1="97.36363636363636" y1="202.0" x2="97.36363636363636" y2="201.0"/>
+    <line stroke="black" x1="95.36363636363636" y1="201.0" x2="99.36363636363636" y2="201.0"/>
+    <line stroke="black" x1="97.36363636363636" y1="202.0" x2="97.36363636363636" y2="203.0"/>
+    <line stroke="black" x1="95.36363636363636" y1="203.0" x2="99.36363636363636" y2="203.0"/>
+    <rect x="109.86363636363636" y="32.0" height="179.0" width="20.454545454545453" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(117.09090909090908,216.0) rotate(90)" text-anchor="start">[-1000, -500)</text>
+    <circle cx="120.09090909090908" cy="204" r="2" fill="black"/>
+    <line stroke="black" x1="120.09090909090908" y1="204.0" x2="120.09090909090908" y2="204.0"/>
+    <line stroke="black" x1="118.09090909090908" y1="204.0" x2="122.09090909090908" y2="204.0"/>
+    <line stroke="black" x1="120.09090909090908" y1="204.0" x2="120.09090909090908" y2="204.0"/>
+    <line stroke="black" x1="118.09090909090908" y1="204.0" x2="122.09090909090908" y2="204.0"/>
+    <rect x="132.59090909090907" y="75.0" height="136.0" width="20.454545454545453" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(139.8181818181818,216.0) rotate(90)" text-anchor="start">[-500, 0)</text>
+    <circle cx="142.8181818181818" cy="202" r="2" fill="black"/>
+    <line stroke="black" x1="142.8181818181818" y1="202.0" x2="142.8181818181818" y2="202.0"/>
+    <line stroke="black" x1="140.8181818181818" y1="202.0" x2="144.8181818181818" y2="202.0"/>
+    <line stroke="black" x1="142.8181818181818" y1="202.0" x2="142.8181818181818" y2="203.0"/>
+    <line stroke="black" x1="140.8181818181818" y1="203.0" x2="144.8181818181818" y2="203.0"/>
+    <rect x="155.3181818181818" y="118.0" height="93.0" width="20.454545454545453" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(162.54545454545456,216.0) rotate(90)" text-anchor="start">[0, 500)</text>
+    <circle cx="165.54545454545456" cy="201" r="2" fill="black"/>
+    <line stroke="black" x1="165.54545454545456" y1="201.0" x2="165.54545454545456" y2="200.0"/>
+    <line stroke="black" x1="163.54545454545456" y1="200.0" x2="167.54545454545456" y2="200.0"/>
+    <line stroke="black" x1="165.54545454545456" y1="201.0" x2="165.54545454545456" y2="202.0"/>
+    <line stroke="black" x1="163.54545454545456" y1="202.0" x2="167.54545454545456" y2="202.0"/>
+    <rect x="178.04545454545453" y="141.0" height="70.0" width="20.454545454545453" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(185.27272727272728,216.0) rotate(90)" text-anchor="start">[500, 1000)</text>
+    <circle cx="188.27272727272728" cy="198" r="2" fill="black"/>
+    <line stroke="black" x1="188.27272727272728" y1="198.0" x2="188.27272727272728" y2="197.0"/>
+    <line stroke="black" x1="186.27272727272728" y1="197.0" x2="190.27272727272728" y2="197.0"/>
+    <line stroke="black" x1="188.27272727272728" y1="198.0" x2="188.27272727272728" y2="199.0"/>
+    <line stroke="black" x1="186.27272727272728" y1="199.0" x2="190.27272727272728" y2="199.0"/>
+    <rect x="200.77272727272725" y="160.0" height="51.0" width="20.454545454545453" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(208.0,216.0) rotate(90)" text-anchor="start">[1000, 1500)</text>
+    <circle cx="211.0" cy="196" r="2" fill="black"/>
+    <line stroke="black" x1="211.0" y1="196.0" x2="211.0" y2="195.0"/>
+    <line stroke="black" x1="209.0" y1="195.0" x2="213.0" y2="195.0"/>
+    <line stroke="black" x1="211.0" y1="196.0" x2="211.0" y2="197.0"/>
+    <line stroke="black" x1="209.0" y1="197.0" x2="213.0" y2="197.0"/>
+    <rect x="223.5" y="172.0" height="39.0" width="20.454545454545453" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(230.72727272727275,216.0) rotate(90)" text-anchor="start">[1500, 2000)</text>
+    <circle cx="233.72727272727275" cy="197" r="2" fill="black"/>
+    <line stroke="black" x1="233.72727272727275" y1="197.0" x2="233.72727272727275" y2="196.0"/>
+    <line stroke="black" x1="231.72727272727275" y1="196.0" x2="235.72727272727275" y2="196.0"/>
+    <line stroke="black" x1="233.72727272727275" y1="197.0" x2="233.72727272727275" y2="198.0"/>
+    <line stroke="black" x1="231.72727272727275" y1="198.0" x2="235.72727272727275" y2="198.0"/>
+    <rect x="246.22727272727272" y="181.0" height="30.0" width="20.454545454545453" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(253.45454545454544,216.0) rotate(90)" text-anchor="start">[2000, 2500)</text>
+    <circle cx="256.45454545454544" cy="194" r="2" fill="black"/>
+    <line stroke="black" x1="256.45454545454544" y1="194.0" x2="256.45454545454544" y2="192.0"/>
+    <line stroke="black" x1="254.45454545454544" y1="192.0" x2="258.45454545454544" y2="192.0"/>
+    <line stroke="black" x1="256.45454545454544" y1="194.0" x2="256.45454545454544" y2="195.0"/>
+    <line stroke="black" x1="254.45454545454544" y1="195.0" x2="258.45454545454544" y2="195.0"/>
+    <rect x="268.95454545454544" y="190.0" height="21.0" width="20.454545454545453" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(276.1818181818182,216.0) rotate(90)" text-anchor="start">[2500, 3000)</text>
+    <circle cx="279.1818181818182" cy="191" r="2" fill="black"/>
+    <line stroke="black" x1="279.1818181818182" y1="191.0" x2="279.1818181818182" y2="189.0"/>
+    <line stroke="black" x1="277.1818181818182" y1="189.0" x2="281.1818181818182" y2="189.0"/>
+    <line stroke="black" x1="279.1818181818182" y1="191.0" x2="279.1818181818182" y2="192.0"/>
+    <line stroke="black" x1="277.1818181818182" y1="192.0" x2="281.1818181818182" y2="192.0"/>
+    <rect x="291.68181818181813" y="195.0" height="16.0" width="20.454545454545453" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(298.9090909090909,216.0) rotate(90)" text-anchor="start">[3000, 3500)</text>
+    <circle cx="301.9090909090909" cy="193" r="2" fill="black"/>
+    <line stroke="black" x1="301.9090909090909" y1="193.0" x2="301.9090909090909" y2="191.0"/>
+    <line stroke="black" x1="299.9090909090909" y1="191.0" x2="303.9090909090909" y2="191.0"/>
+    <line stroke="black" x1="301.9090909090909" y1="193.0" x2="301.9090909090909" y2="195.0"/>
+    <line stroke="black" x1="299.9090909090909" y1="195.0" x2="303.9090909090909" y2="195.0"/>
+    <rect x="314.4090909090909" y="172.0" height="39.0" width="20.454545454545453" fill="#9999FF" style="stroke:black"/>
+    <text transform="translate(321.6363636363636,216.0) rotate(90)" text-anchor="start">&gt;= 3500</text>
+    <circle cx="324.6363636363636" cy="189" r="2" fill="black"/>
+    <line stroke="black" x1="324.6363636363636" y1="189.0" x2="324.6363636363636" y2="188.0"/>
+    <line stroke="black" x1="322.6363636363636" y1="188.0" x2="326.6363636363636" y2="188.0"/>
+    <line stroke="black" x1="324.6363636363636" y1="189.0" x2="324.6363636363636" y2="190.0"/>
+    <line stroke="black" x1="322.6363636363636" y1="190.0" x2="326.6363636363636" y2="190.0"/>
+    <line stroke-dasharray="10,5" stroke="black" x1="86.0" y1="200.0" x2="336.0" y2="200.0"/>
+    <line stroke="black" x1="336.0" y1="20.0" x2="336.0" y2="211.0"/>
+    <line stroke="black" x1="339.0" y1="211.0" x2="336.0" y2="211.0"/>
+    <text transform="translate(343.0,211.0)" text-anchor="start"> 0.0</text>
+    <line stroke="black" x1="339.0" y1="192.0" x2="336.0" y2="192.0"/>
+    <text transform="translate(343.0,192.0)" text-anchor="start"> 0.1</text>
+    <line stroke="black" x1="339.0" y1="173.0" x2="336.0" y2="173.0"/>
+    <text transform="translate(343.0,173.0)" text-anchor="start"> 0.2</text>
+    <line stroke="black" x1="339.0" y1="154.0" x2="336.0" y2="154.0"/>
+    <text transform="translate(343.0,154.0)" text-anchor="start"> 0.3</text>
+    <line stroke="black" x1="339.0" y1="135.0" x2="336.0" y2="135.0"/>
+    <text transform="translate(343.0,135.0)" text-anchor="start"> 0.4</text>
+    <line stroke="black" x1="339.0" y1="115.0" x2="336.0" y2="115.0"/>
+    <text transform="translate(343.0,115.0)" text-anchor="start"> 0.5</text>
+    <line stroke="black" x1="339.0" y1="96.0" x2="336.0" y2="96.0"/>
+    <text transform="translate(343.0,96.0)" text-anchor="start"> 0.6</text>
+    <line stroke="black" x1="339.0" y1="77.0" x2="336.0" y2="77.0"/>
+    <text transform="translate(343.0,77.0)" text-anchor="start"> 0.7</text>
+    <line stroke="black" x1="339.0" y1="58.0" x2="336.0" y2="58.0"/>
+    <text transform="translate(343.0,58.0)" text-anchor="start"> 0.8</text>
+    <line stroke="black" x1="339.0" y1="39.0" x2="336.0" y2="39.0"/>
+    <text transform="translate(343.0,39.0)" text-anchor="start"> 0.9</text>
+    <line stroke="black" x1="339.0" y1="20.0" x2="336.0" y2="20.0"/>
+    <text transform="translate(343.0,20.0)" text-anchor="start"> 1.0</text>
+    <text transform="translate(380.0,115.0) rotate(270)" text-anchor="middle">mean(RespondPress)</text>
+  </g>
+</svg>
