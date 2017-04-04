@@ -1,43 +1,90 @@
 <?xml version="1.0" ?>
 <build name="Build"   default="Main" initial="init">
 
-    <parameter 	name="observation date" value=""  />
-    <parameter 	name="Benchmark audit" 	value="dummy"  type="file" />
-    <parameter 	name="Benchmark focus" 	value="C:/Users/ro020si/Documents/Research/PopnMonitoring/foci/DirectBankUSA.ftr"  type="file" />
-    <parameter 	name="Monitored focus" 	value="C:/Users/ro020si/Documents/Research/PopnMonitoring/foci/DB2.ftr"  type="file"/>
-    <parameter  name="field list" 		value="" type="string"/>
-    <parameter  name="run directory" 	value=""/>
+    <!-- Benchmark_audit, OR focus, OR step and unit  -->
 
-    <parameter  name="outdir" 	value="C:/Bluefly"/>
+
+    <parameter name="Monitored" value="" description="Name of monitored focus"/>
+
+    <target name="test">
+    <echo>VAR IS: ${test} ${test2}</echo>
+    </target>
 
     <target name="Main">
+
+    <if>
+        <not><equals arg1="${Monitored}" arg2=""/></not>
+        <then>
+        <echo>reset Monitored_focus</echo>
+        <propertyregex property="Monitored_focus" input="${Monitored}" regexp="(.*)" replace="\1" defaultvalue="${Monitored}" override="true"/>
+
+        <echo>reset ${Monitored_focus}</echo>
+</then>
+</if>
         <target name="get audit">
-            <basename property="basename1" file="${Benchmark focus}" suffix=".ftr"/>
-            <basename property="basename2" file="${Benchmark focus}" suffix=".qshtml"/>
-            <echo>b1 ${basename1}, b1 ${basename2}</echo>
-
-            <propertyregex property="path1"	input="${focus}"	regexp="${basename1}"	replace="" defaultvalue="${focus}"/>
-
             <if>
-                <available file="${Benchmark audit}"/>
+                <available file="${Benchmark_audit}"/>
                 <then>
-                    <echo>COPY</echo>
-                    <copy file="${Benchmark audit}" tofile="${logdir}/benchmark.qshtml"/>
+                    <echo>COPYING</echo>
+                    <copy file="${Benchmark_audit}" tofile="${logdir}/benchmark.qshtml"/>
                 </then>
                 <else>
                     <if>
-                        <equals arg1="${field list}" arg2=""/>
+                        <not><isset property="${Benchmark_focus}" /></not>
                         <then>
-                            <qsaudit input="${Benchmark focus}"  output="${logdir}/benchmark.qshtml"/>
+                            <!-- GET MATCHING BENCHMARK FOCUS -->
+                            <echo>HERE</echo>
+                            <propertyregex property="Mdate" input="${Monitored_focus}" regexp=".*(${date_pattern}).*" replace="\1"/>
+                            <echo>Mdate ${Mdate}</echo>
+                            <qsdateproperty property="Bdate" value="${Mdate}" inputpattern="${date_parse}" outputpattern="${date_parse}" offset="${offset}" unit="${unit}"/>
+                            <echo>Bdate ${Bdate}</echo>
+                            <propertyregex property="Binclude" override="true" input="${Binclude}" regexp="_date_" replace="${Bdate}" defaultvalue="${Binclude}"/> 
+                            <echo>Binclude ${Binclude}</echo>
+                            <fileset dir="${Bdir}" id="Dataset">
+                                <include name="${Binclude}"/>
+                            </fileset>
+
+                            <pathconvert pathsep="," property="Dataset" refid="Dataset"/> 
+                            <propertyregex property="Benchmark_focus" override="true" input="${Dataset}" regexp=".*," replace="" defaultvalue="${Dataset}"/> 
+                            <echo message="Benchmark_focus to be used is ${Benchmark_focus}"/>   
                         </then>
-                        <else>
-                            <qsaudit input="${Benchmark focus}" fields="${field list}" output="${logdir}/benchmark.qshtml"/>
-                        </else>
+                    </if>
+                    <if>
+                        <available file="${Benchmark_focus}"/>
+                        <then>
+                            <if>
+                                <not>
+                                    <equals arg1="${metadata}" arg2=""/>
+                                </not>
+                                <then>
+                                    <qsimportmetadata input="${Benchmark_focus}" output="${logdir}/benchmark.ftr" metadata="${metadata}"/>
+                                </then>
+                            </if>
+                            <if>    
+                                <not>
+                                    <equals arg1="${field_list}" arg2=""/>
+                                </not>
+                                <then>
+                                    <qsaudit input="${logdir}/benchmark.ftr"  fields="${field_list}" output="${logdir}/benchmark.qshtml"/>
+                                </then>
+                                <elseif> 
+                                    <not>
+                                        <equals arg1="${xfield_list}" arg2=""/>
+                                    </not>
+                                    <then>
+                                        <qsaudit input="${logdir}/benchmark.ftr" xfields="${xfield_list}" output="${logdir}/benchmark.qshtml"/>
+                                    </then>
+                                </elseif> 
+                                <else>
+                                    <qsaudit input="${logdir}/benchmark.ftr"  output="${logdir}/benchmark.qshtml"/>
+                                </else>   
+                            </if>
+                        </then>
                     </if>
                 </else>
             </if>
 
-            <qsaudit overwrite="true" input="${Monitored focus}" reference="${logdir}/benchmark.qshtml" output="${outdir}/report.qshtml"/>
+            <qsaudit overwrite="true" input="${Monitored_focus}" reference="${logdir}/benchmark.qshtml" output="${outdir}/report.qshtml"/>
 
             <qshtmlunpack input="${outdir}/report.qshtml" outputdir="${outdir}/report" />
 
@@ -51,9 +98,6 @@
             <!-- class="qsaudit_colmindeltapc">	<div class="qs_deltavalue_eq"> -->
             <property name="deltapc_end" value="&lt;/div&gt;\s*&lt;/td&gt;"/>
             <!--</div> </td> -->
-            <property name="ten_percent_plus" value="-?[1-9][0-9]{1,2}\.?[0-9]*"/>
-            <!-- NN or NNN -->
-            <property name="five_percent_plus" value="-?(?:[1-9][0-9]|[5-9])\.?[0-9]*"/>
             <!-- NN or 5,6,7,9  -->
             <loadfile srcfile="${outdir}/report/qsreport.html" property="report">
                 <filterchain>
@@ -62,7 +106,7 @@
                         <!-- highlight yellow  *deltapc over certain value -->
                         <!-- pattern="&lt;td (class=&quot;[^\s]*deltapc&quot;&gt;\s*&lt;div class=&quot;[^&quot;]+&quot;&gt;)(-?[1-9][0-9]{1,2}\.?[0-9]*)(&lt;/div&gt;\s*&lt;/td&gt;)" -->
                         <replaceregex
-						pattern="${td}(${deltapc})(${ten_percent_plus})(${deltapc_end})"
+						pattern="${td}(${deltapc})(${threshold})(${deltapc_end})"
 						replace="${td} bgcolor=&quot;yellow&quot; \1\2\3" flags="g"/>
 
                     </tokenfilter>
@@ -73,7 +117,7 @@
         </target>
 
 
-      <!--   <target name="Build MHT file">
+        <!--   <target name="Build MHT file">
 
             <fileset id="images"	dir="${logdir}/report/qsreport"    includes="*.png,*.svg"   	  />
             <pathconvert property="imagelist"   pathsep=","   refid="images"	 			  />
@@ -114,7 +158,7 @@
                     <tokenfilter>
                         <!-- highlight yellow and *** deltapc over certain value -->
                         <replaceregex
-						pattern="${td}(${deltapc})(${ten_percent_plus})(${deltapc_end})"
+						pattern="${td}(${deltapc})(${threshold})(${deltapc_end})"
 						replace="${td} bgcolor=&quot;yellow&quot; \1***\2\3" flags="g"/>
                         <!-- Remove non-flagged table rows					-->
                         <replaceregex pattern="&lt;tr&gt;" replace="${line.separator}&lt;tr&gt;" flags="g"/>
@@ -142,10 +186,51 @@
                         <replaceregex pattern="~" replace=""  flags="g"/>
 
                     </tokenfilter>
+                    <linecontains>
+                        <contains value="table"/>
+                    </linecontains>
                 </filterchain>
             </loadfile>
             <echo>${exceptions}</echo>
-            <echo file="${outdir}/exceptions.html">${exceptions}</echo>
+            <echo file="${outdir}/exceptions.html">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;&lt;/head&gt;${exceptions}</echo>
+
+            <property name="absout" location="${outdir}"/>
+            <echo file="${absout}/wc2.bat">cat ${absout}\exceptions.html | wc -l &gt; count</echo>
+            <exec executable="${absout}/wc2.bat"/>
+            <loadfile srcfile="count" property="linecount"/>
+
+            <echo message="number of exceptions: ${linecount}" />
+
+            <if>
+                <not>
+                    <equals arg1="${linecount}" arg2="0" />
+                </not>
+                <then>
+                        <propertyregex property="mon" input="${Monitored_focus}" regexp=".*[\\\/]" replace="" />
+                    <propertyregex property="ben" input="${Benchmark_focus}" regexp=".*\\" replace="" />
+                    <mail mailhost="r22epost.r22.local" 
+                    mailport="25" 
+                    from="portraituser@rikstoto.no" 
+                    subject="Exceptions: ${linecount} exceptions found for ${mon} vs. ${ben}"
+					message="${linecount} exceptions found for ${Monitored_focus} vs. ${Benchmark_focus} ${line.separator}${line.separator} ${exceptions}"
+					messagemimetype="text/html" charset="ISO-8859-1" 
+                    tolist="rob.simpson@pb.com" 
+                    files="${absout}\highlights.html"
+                    />		
+                </then>
+                <else>
+                    <mail mailhost="r22epost.r22.local" 
+                    mailport="25" 
+                    from="portraituser@rikstoto.no" 
+                    subject="Exceptions: :-) No exceptions found for ${Monitored_focus} vs. ${Benchmark_focus}"
+					message="No exceptions found for ${Monitored_focus} vs. ${Benchmark_focus} \n \n  ${exceptions}"
+					messagemimetype="text/html" charset="ISO-8859-1" 
+                    tolist="rob.simpson@pb.com" 
+                    files="${absout}\highlights.html"
+                    />		
+                </else>
+
+            </if>
 
             <!--
 <td class="qsaudit_colqinideltapc">	<table class="qs_deltavalue_pos">10</table>			</td>
@@ -159,6 +244,32 @@
 
 
     <target name="init">
+
+    <loadproperties srcfile="test.params"/>
+        <property name="five_percent_plus"      value="-?(?:[1-9][0-9]|[5-9])\.?[0-9]*"/>    
+        <property name="ten_percent_plus"       value="-?[1-9][0-9]{1,2}\.?[0-9]*"/>
+        <property name="twenty_percent_plus"    value="-?(?:[2-9][0-9]{1,2}|100)\.?[0-9]*"/>
+
+        <if>
+            <equals arg1="${percent_change}" arg2="5"/>
+            <then>
+                <property name="threshold" value="${five_percent_plus}"/>
+            </then>
+            <elseif>
+                <equals arg1="${percent_change}" arg2="10"/>
+                <then>
+                    <property name="threshold" value="${ten_percent_plus}"/>
+                </then>
+            </elseif>
+            <elseif>
+                <equals arg1="${percent_change}" arg2="20"/>
+                <then>
+                    <property name="threshold" value="${twenty_percent_plus}"/>
+                </then>
+            </elseif>
+        </if>
+
+        <!-- NN or NNN -->
 
         <defaults  parallel="2" concurrent="false" outputproperty="true" logfile="BuildLogfile.log"/>
         <!-- Generally useful variables -->
@@ -180,26 +291,28 @@
         <property name="slash" value="/"/>
 
 
-        <!-- ######  Create timestamp for log unless 'run directory' parameter is provided ##### -->
+        <!-- ######  Create timestamp for log unless 'run_directory' parameter is provided ##### -->
+        <echo> run dir ${run_directory}</echo>
         <if>
-            <equals arg1="${run directory}" arg2="" />
+            <equals arg1="${run_directory}" arg2="false"/>
             <then>
+            <echo> run dir is false</echo>
                 <property name="logdir" value="${logs}/Build_${buildlabel}" description="Output directory"/>
                 <echo message="Setting property logdir to ${logdir}"/>
             </then>
             <else>
                 <!-- Translate \ into / -->
-                <propertyregex property="run directory" input="${run directory}" regexp="\\" replace="/" defaultvalue="${run directory}" override="true"/>
+                <propertyregex property="run_directory" input="${run_directory}" regexp="\\" replace="/" defaultvalue="${run_directory}" override="true"/>
                 <!-- Is it a path? -->
-                <propertyregex property="run directory path" input="${run directory}" regexp=".*/.*" replace="true" defaultvalue="false"/>
+                <propertyregex property="run_directory path" input="${run_directory}" regexp=".*/.*" replace="true" defaultvalue="false"/>
                 <if>
-                    <equals arg1="${run directory path}" arg2="true"/>
+                    <equals arg1="${run_directory path}" arg2="true"/>
                     <then>
-                        <property name="logdir" value="${run directory}" description="Output directory"/>
+                        <property name="logdir" value="${run_directory}" description="Output directory"/>
                     </then>
                     <else>
                         <!-- else put into /logs  -->
-                        <property name="logdir" value="${logs}/${run directory}" description="Output directory"/>
+                        <property name="logdir" value="${logs}/${run_directory}" description="Output directory"/>
                     </else>
                 </if>
                 <!-- copy this script into log dir -->
@@ -212,42 +325,9 @@
         <basename property="buildscriptname" file="${qsbuild.file}" />
         <copy file="${qsbuild.file}" tofile="${logdir}/${buildlabel}_${buildscriptname}"/>
 
+        <property  name="outdir" 	value="${logdir}"/>
     </target>
     <!-- Init -->
-
-    <target name="test">
-
-        <echo file="test.xsl" append="false">
-            <![CDATA[<?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Edited by XMLSpy® -->
-<xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:template match="/">
-  <html>
-  <body>
-    <h2>My CD Collection</h2>
-    <table border="1">
-      <tr bgcolor="#9acd32">
-        <th>Title</th>
-        <th>Artist</th>
-      </tr>
-      <xsl:for-each select="/html/body/table/table/tbody/tr">
-      <tr>
-        <td><xsl:value-of select="." /></td>
-      </tr>
-      </xsl:for-each>
-    </table>
-  </body>
-  </html>
-</xsl:template>
-</xsl:stylesheet>
-]]></echo>
-
-        <xslt in="report.html" style="test.xsl" out="out.html" />
-
-        <loadfile srcfile="out.html" property="test.txt"/>
-        <echo>${test.txt}</echo>
-    </target>
 
 </build>
 

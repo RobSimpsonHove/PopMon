@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<focus xmlns="http://www.quadstone.com/xml" schemaLocation="http://www.quadstone.com/xml/qs7.0A/focus.rnc">
+  <history>
+    <operation>qsimportdb -logfile E:\Rikstoto\QSDataBuild\2016_scripts\GetLatestTx\scripts\blah.log -memory -1 -parallel -1 -force -udc MHProd@ADMProd -sql C:\PortraitMiner7.0\shared\tmp\QSScript6898876458141523649.tmp -output E:\Rikstoto\QSDataBuild\2016_scripts\GetLatestTx\rundirs\GetLatestTxBuild_20170327-173944\TX_PortraitSource_raw.ftr</operation>
+    <operation>qssort -memory -1 -parallel -1 -keys CUS_CustomerID,atd_selldate1,SystemNo -input E:\Rikstoto\QSDataBuild\2016_scripts\GetLatestTx\rundirs\GetLatestTxBuild_20170327-173944\TX_PortraitSource_raw.ftr -output E:\Rikstoto\QSDataBuild\2016_scripts\GetLatestTx\rundirs\GetLatestTxBuild_20170327-173944\TX_PortraitSource_raw_s.ftr</operation>
+    <operation>qsderive -memory -1 -parallel -1 -force -input E:\Rikstoto\QSDataBuild\2016_scripts\GetLatestTx\rundirs\GetLatestTxBuild_20170327-173944\TX_PortraitSource_raw_s.ftr -derivations C:\PortraitMiner7.0\shared\tmp\QSScript8251930770829651004.tmp</operation>
+    <operation>qsimportmetadata -memory -1 -parallel -1 -input E:\Rikstoto\QSDataBuild\2016_scripts\GetLatestTx\rundirs\GetLatestTxBuild_20170327-173944\TX_PortraitSource_raw_s.ftr -metadata C:\Users\portraituser\PycharmProjects\PopMon\src\TX_PortraitSource_raw_s.qsfm</operation>
+    <operation>qsimportmetadata -memory -1 -parallel -1 -input E:\Rikstoto\QSDataBuild\2016_scripts\GetLatestTx\rundirs\GetLatestTxBuild_20170327-173944\TX_PortraitSource_raw_s.ftr -metadata C:\Users\portraituser\PycharmProjects\PopMon\src\TX_PortraitSource_raw_s.qsfm</operation>
+    <operation>qsimportmetadata -memory -1 -parallel -1 -input E:\Rikstoto\QSDataBuild\2016_scripts\GetLatestTx\rundirs\GetLatestTxBuild_20170327-173944\TX_PortraitSource_raw_s.ftr -metadata C:\Users\portraituser\PycharmProjects\PopMon\src\TX_PortraitSource_raw_s.qsfm</operation>
+    <operation>qsimportmetadata -memory -1 -parallel -1 -input E:\Rikstoto\QSDataBuild\2016_scripts\GetLatestTx\rundirs\GetLatestTxBuild_20170327-173944\TX_PortraitSource_raw_s.ftr -metadata C:\Users\portraituser\PycharmProjects\PopMon\src\TX_PortraitSource_raw_s.qsfm</operation>
+    <operation>qsimportmetadata -memory -1 -parallel -1 -input E:\Rikstoto\QSDataBuild\2016_scripts\GetLatestTx\rundirs\GetLatestTxBuild_20170327-173944\TX_PortraitSource_raw_s.ftr -metadata C:\Users\portraituser\PycharmProjects\PopMon\src\TX_PortraitSource_raw_s.qsfm</operation>
+  </history>
+  <field name="atd_selldate1" type="date"/>
+  <field name="TicketFee" type="real">
+    <binning name="TicketFee-1">
+      <numeric display="equalwidth" wholenumbered="false" style="userdefined">
+        <boundaries minVal="0.0" maxVal="5.5" endbins="none">
+          <boundary falls="left">0.0</boundary>
+          <boundary falls="right">1.0</boundary>
+          <boundary falls="right">2.0</boundary>
+          <boundary falls="right">5.0</boundary>
+        </boundaries>
+      </numeric>
+    </binning>
+  </field>
+  <field name="LopsDate" type="date"/>
+  <field name="Agent" type="string" length="6"/>
+  <field name="SystemNo2" type="integer"/>
+  <field name="SystemNo" type="integer"/>
+  <field name="CUS_CustomerID" type="integer"/>
+  <field name="SellAmount" type="real">
+    <binning name="SellAmount-1">
+      <numeric display="equalwidth" wholenumbered="false" adjustnbins="true" targetnbins="5" forcewholenumbered="false" style="equalwidth">
+        <minendparam type="auto"/>
+        <maxendparam type="auto"/>
+        <boundaries minVal="0.5" maxVal="10500.0" endbins="both">
+          <boundary falls="right">20.0</boundary>
+          <boundary falls="right">40.0</boundary>
+          <boundary falls="right">60.0</boundary>
+          <boundary falls="right">80.0</boundary>
+          <boundary falls="right">100.0</boundary>
+        </boundaries>
+      </numeric>
+    </binning>
+    <tag name="qa"/>
+  </field>
+  <field name="RefundAmount" type="real">
+    <binning name="RefundAmount-1">
+      <numeric display="equalwidth" wholenumbered="false" adjustnbins="true" targetnbins="10" forcewholenumbered="false" style="equalwidth">
+        <minendparam type="auto"/>
+        <maxendparam type="auto"/>
+        <boundaries minVal="0.0" maxVal="0.0" endbins="none"/>
+      </numeric>
+    </binning>
+  </field>
+  <field name="WinningSum" type="real">
+    <binning name="WinningSum-1">
+      <numeric display="equalwidth" wholenumbered="false" adjustnbins="true" targetnbins="1" forcewholenumbered="false" style="equalwidth">
+        <minendparam type="fixed">
+          <boundary falls="left">0.0</boundary>
+        </minendparam>
+        <maxendparam type="fixed">
+          <boundary falls="right">100.0</boundary>
+        </maxendparam>
+        <boundaries minVal="0.0" maxVal="51050.0" endbins="both">
+          <boundary falls="left">0.0</boundary>
+          <boundary falls="right">100.0</boundary>
+        </boundaries>
+      </numeric>
+    </binning>
+    <tag name="qa"/>
+  </field>
+  <field name="ProductCode" type="string" length="4">
+    <binning name="ProductCode-1">
+      <categorical>
+        <categories>
+          <category name="5P" levelname="unnamed node">
+            <category name="5P" levelname="base categories" value="5P"/>
+          </category>
+          <category name="DD">
+            <category name="DD" value="DD"/>
+          </category>
+          <category name="P">
+            <category name="P" value="P"/>
+          </category>
+          <category name="ST">
+            <category name="ST" value="ST"/>
+          </category>
+          <category name="T">
+            <category name="T" value="T"/>
+          </category>
+          <category name="TV">
+            <category name="TV" value="TV"/>
+          </category>
+          <category name="V">
+            <category name="V" value="V"/>
+          </category>
+          <category name="V4">
+            <category name="V4" value="V4"/>
+          </category>
+          <category name="V5A">
+            <category name="V5A" value="V5A"/>
+          </category>
+          <category name="V6">
+            <category name="V6" value="V6"/>
+          </category>
+          <category name="V64">
+            <category name="V64" value="V64"/>
+          </category>
+          <category name="V65">
+            <category name="V65" value="V65"/>
+          </category>
+          <category name="V6a">
+            <category name="V6a" value="V6a"/>
+          </category>
+          <category name="V75">
+            <category name="V75" value="V75"/>
+          </category>
+          <category name="V76">
+            <category name="V76" value="V76"/>
+          </category>
+          <category name="VPP">
+            <category name="VPP" value="VPP"/>
+          </category>
+          <category name="VPV">
+            <category name="VPV" value="VPV"/>
+          </category>
+        </categories>
+      </categorical>
+    </binning>
+    <tag name="qa"/>
+  </field>
+  <field name="BetMethodCode" type="string" length="4">
+    <binning name="BetMethodCode-1">
+      <categorical>
+        <categories>
+          <category name="AB" levelname="unnamed node">
+            <category name="AB" levelname="base categories" value="AB"/>
+          </category>
+          <category name="EKS">
+            <category name="EKS" value="EKS"/>
+          </category>
+          <category name="EU">
+            <category name="EU" value="EU"/>
+          </category>
+          <category name="LB">
+            <category name="LB" value="LB"/>
+          </category>
+          <category name="LP">
+            <category name="LP" value="LP"/>
+          </category>
+          <category name="LS">
+            <category name="LS" value="LS"/>
+          </category>
+          <category name="LT">
+            <category name="LT" value="LT"/>
+          </category>
+          <category name="S">
+            <category name="S" value="S"/>
+          </category>
+        </categories>
+      </categorical>
+    </binning>
+    <tag name="qa"/>
+  </field>
+  <field name="Channel" type="string" length="4">
+    <binning name="Channel-1">
+      <categorical>
+        <categories>
+          <category name="Ban" levelname="unnamed node">
+            <category name="Ban" levelname="base categories" value="Ban"/>
+          </category>
+          <category name="Bax">
+            <category name="Bax" value="Bax"/>
+          </category>
+          <category name="Ekm">
+            <category name="Ekm" value="Ekm"/>
+          </category>
+          <category name="Int">
+            <category name="Int" value="Int"/>
+          </category>
+          <category name="Kom">
+            <category name="Kom" value="Kom"/>
+          </category>
+          <category name="Mob">
+            <category name="Mob" value="Mob"/>
+          </category>
+        </categories>
+      </categorical>
+    </binning>
+    <tag name="qa"/>
+  </field>
+  <field name="selltime" type="date">
+    <binning name="selltime-1">
+      <date display="equalwidth" binwidth="3" binby="hour" reference="auto" style="equalwidth">
+        <minendparam type="none"/>
+        <maxendparam type="none"/>
+        <boundaries minVal="1900-01-01T07:00:12Z" maxVal="1900-01-01T21:59:52Z" endbins="none">
+          <boundary>1900-01-01T10:00:00Z</boundary>
+          <boundary>1900-01-01T13:00:00Z</boundary>
+          <boundary>1900-01-01T16:00:00Z</boundary>
+          <boundary>1900-01-01T19:00:00Z</boundary>
+        </boundaries>
+      </date>
+    </binning>
+    <tag name="qa"/>
+  </field>
+  <field name="dateandtime" type="date"/>
+  <field name="ProgramTrackCode" type="string" length="6"/>
+  <field name="IsSubscriptionBet" type="integer" length="2" dhType="short">
+    <binning name="IsSubscriptionBet-1">
+      <numeric display="equalwidth" wholenumbered="true" adjustnbins="true" targetnbins="10" forcewholenumbered="false" style="equalwidth">
+        <minendparam type="auto"/>
+        <maxendparam type="auto"/>
+        <boundaries minVal="0.0" maxVal="0.0" endbins="none"/>
+      </numeric>
+    </binning>
+    <tag name="qa"/>
+  </field>
+  <field name="DimFraction" type="integer">
+    <binning name="DimFraction-1">
+      <numeric display="equalwidth" wholenumbered="true" adjustnbins="true" targetnbins="10" forcewholenumbered="false" style="equalwidth">
+        <minendparam type="auto"/>
+        <maxendparam type="auto"/>
+        <boundaries minVal="1.0" maxVal="3.0" endbins="none">
+          <boundary falls="right">2.0</boundary>
+          <boundary falls="right">3.0</boundary>
+        </boundaries>
+      </numeric>
+    </binning>
+    <tag name="qa"/>
+  </field>
+  <field name="IsPartyBet" type="integer" length="2" dhType="short">
+    <binning name="IsPartyBet-1">
+      <numeric display="equalwidth" wholenumbered="true" adjustnbins="true" targetnbins="10" forcewholenumbered="false" style="equalwidth">
+        <minendparam type="auto"/>
+        <maxendparam type="auto"/>
+        <boundaries minVal="0.0" maxVal="1.0" endbins="none">
+          <boundary falls="right">1.0</boundary>
+        </boundaries>
+      </numeric>
+    </binning>
+    <tag name="qa"/>
+  </field>
+  <field name="CUS_CreatedDate" type="date"/>
+  <field name="atd_systemno" type="integer">
+    <fdl>if (isnull(SystemNo) or SystemNo=0) then -(count()-rownum()) else SystemNo</fdl>
+  </field>
+  <field name="atd_Fraction0" type="integer">
+    <fdl>case
+                                isnull(DimFraction) : 100 ;
+                                DimFraction=1 : 100 ;
+                                DimFraction=2 : 50 ;
+                                DimFraction=3 : 25</fdl>
+  </field>
+  <field name="dayindex" type="integer">
+    <fdl seed="-510407165">countwholedays(atd_selldate1 ,now() )</fdl>
+  </field>
+  <field name="lastday" type="integer">
+    <fdl seed="-100334840">min(dayindex )=dayindex</fdl>
+    <recordselection> 
+      <numeric nullhandling="nomention">
+        <range min="1.0" minisincluded="true" max="1.0" maxisincluded="true"/>
+      </numeric>
+    </recordselection>
+    <binning name="lastday-1">
+      <numeric display="equalwidth" wholenumbered="true" adjustnbins="true" targetnbins="10" forcewholenumbered="false" style="equalwidth">
+        <minendparam type="auto"/>
+        <maxendparam type="auto"/>
+        <boundaries minVal="1.0" maxVal="1.0" endbins="none"/>
+      </numeric>
+    </binning>
+  </field>
+</focus>
