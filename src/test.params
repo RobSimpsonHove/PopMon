@@ -1,0 +1,22 @@
+run_directory=false
+
+Monitored_focus=E:/Rikstoto/QSDataBuild/2016_scripts/GetLatestTx/rundirs/GetLatestTxBuild_20170403-083505/TX_PortraitSource_raw_s.ftr
+metadata=TX_PortraitSource_raw_s.qsfm
+#field__list=
+xfield_list=atd_selldate1,atd_systemno,SystemNo,LopsDate,selltime,dateandtime,CUS_CreatedDate,CUS_CustomerID
+percent_change=10
+
+
+## Benchmark_audit, OR Benchmark_focus, OR root pattern, date step and unit ########
+
+#Benchmark_audit=dummy
+
+#Benchmark_focus=E:/Rikstoto/QSDataBuild/2016_scripts/GetLatestTx/rundirs/GetLatestTxBuild_20170327-173944/TX_PortraitSource_raw_s.ftr
+
+Bdir=E:/Rikstoto/QSDataBuild/2016_scripts/GetLatestTx/rundirs
+Binclude=*_date_*/*TX_PortraitSource_raw_s.ftr
+date_pattern=[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]
+date_parse=%Y%m%d
+unit=week
+offset=-1
+
